@@ -1,11 +1,7 @@
-import { Text, View } from "react-native";
+import { Redirect } from "expo-router";
+import { useAuth } from "../context/AuthContext";
 
 export default function Index() {
-  return (
-    <>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>First Expo App</Text>
-      </View>
-    </>
-  );
+  const { token } = useAuth();
+  return token ? <Redirect href="/(root)/(tabs)" /> : <Redirect href="/(auth)/sign-in" />;
 }
